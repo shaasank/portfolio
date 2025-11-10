@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SHAS LAB Design System - Brutalist Minimalism */
+
+@layer base {
+  :root {
+    /* Core Colors - High Contrast */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
+    
+    /* Accent - Electric Blue (Default) */
+    --lab-accent: 210 100% 50%;
+    --lab-accent-foreground: 0 0% 100%;
+    
+    /* Structural Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    
+    --primary: 0 0% 8%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 8%;
+    
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
+    
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    
+    --border: 0 0% 12%;
+    --grid-line: 0 0% 88%;
+    
+    /* Sharp edges only */
+    --radius: 0rem;
+    
+    /* Fast transitions */
+    --transition-fast: 150ms linear;
+  }
+  
+  /* PAGE-SPECIFIC COLOR THEMES */
+  
+  /* Home Page - Electric Blue (Default) */
+  html[data-page="home"] {
+    --lab-accent: 210 100% 50%;
+    --accent: 210 100% 50%;
+    --background: 0 0% 98%;
+    --grid-line: 0 0% 90%;
+  }
+  
+  /* About Page - Cyber Green */
+  html[data-page="about"] {
+    --lab-accent: 142 76% 45%;
+    --accent: 142 76% 45%;
+    --background: 0 0% 97%;
+    --grid-line: 0 0% 88%;
+  }
+  
+  /* Work Page - Industrial Orange */
+  html[data-page="work"] {
+    --lab-accent: 32 100% 50%;
+    --accent: 32 100% 50%;
+    --background: 0 0% 96%;
+    --grid-line: 0 0% 86%;
+  }
+  
+  /* Lab Page - Ultraviolet Purple */
+  html[data-page="lab"] {
+    --lab-accent: 265 85% 60%;
+    --accent: 265 85% 60%;
+    --background: 0 0% 95%;
+    --grid-line: 0 0% 84%;
+  }
+  
+  /* NotFound Page - Signal Red */
+  html[data-page="notfound"] {
+    --lab-accent: 355 85% 50%;
+    --accent: 355 85% 50%;
+    --background: 0 0% 10%;
+    --foreground: 0 0% 98%;
+    --grid-line: 0 0% 20%;
+  }
+  
+  /* Projects Page - Warning Orange */
+  html[data-page="projects"] {
+    --lab-accent: 25 95% 53%;
+    --accent: 25 95% 53%;
+  }
+  
+  /* Research Page - Deep Purple */
+  html[data-page="research"] {
+    --lab-accent: 271 81% 56%;
+    --accent: 271 81% 56%;
+  }
+  
+  /* Contact Page - Hot Pink */
+  html[data-page="contact"] {
+    --lab-accent: 330 81% 60%;
+    --accent: 330 81% 60%;
+  }
+  
+  /* Team Page - Neon Yellow */
+  html[data-page="team"] {
+    --lab-accent: 54 100% 50%;
+    --accent: 54 100% 50%;
+    --lab-accent-foreground: 0 0% 8%;
+    --accent-foreground: 0 0% 8%;
+  }
+  
+  /* Publications Page - Ruby Red */
+  html[data-page="publications"] {
+    --lab-accent: 348 83% 47%;
+    --accent: 348 83% 47%;
+  }
+  
+  /* Blog Page - Aqua Teal */
+  html[data-page="blog"] {
+    --lab-accent: 174 72% 56%;
+    --accent: 174 72% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: -0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Typography Scale */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold uppercase tracking-tight;
+    letter-spacing: -0.03em;
+  }
+  
+  /* Grid Background Pattern */
+  .grid-background {
+    background-image: 
+      linear-gradient(to right, hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  
+  /* Custom Cursor (Optional) */
+  .lab-cursor {
+    cursor: crosshair;
+  }
+}
+
+@layer components {
+  /* Lab Link - Underline slide effect */
+  .lab-link {
+    @apply relative inline-block;
+    transition: var(--transition-fast);
+  }
+  
+  .lab-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-accent;
+    transition: width var(--transition-fast);
+  }
+  
+  .lab-link:hover::after {
+    @apply w-full;
+  }
+  
+  /* Lab Card - Hard cut hover */
+  .lab-card {
+    @apply border border-border transition-all;
+    transition-duration: 150ms;
+    transition-timing-function: linear;
+  }
+  
+  .lab-card:hover {
+    @apply border-accent;
+  }
+  
+  /* Section Divider */
+  .section-divider {
+    @apply border-t border-border;
+  }
+  
+  /* Modular spacing system (8px base) */
+  .spacing-xs { @apply p-2; }
+  .spacing-sm { @apply p-4; }
+  .spacing-md { @apply p-6; }
+  .spacing-lg { @apply p-8; }
+  .spacing-xl { @apply p-12; }
+  
+  /* Page color indicator bar (optional visual) */
+  .page-indicator {
+    @apply h-1 w-full bg-accent;
+  }
+}
