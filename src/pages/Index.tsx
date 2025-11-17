@@ -94,40 +94,54 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-1 grid-background relative" style={{ perspective: '0px' }}>
-        <div className="max-w-4xl w-full text-center space-y-6">
-          <div className="flex items-center justify-center gap-8 mb-8">
-            <div 
-              className=" rounded-full border-0 border-foreground overflow-hidden flex-shrink-0"
-              style={{
-                transform: `scale(${1 - scrollProgress * 0.5})`,
-                opacity: explosionOpacity,
-              }}
-            >
-              <img 
-                src={profileImage} 
-                alt="Profile" 
-                className=""
-              />
-            </div>
-          </div>
-          
-          <h1 
-            className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter"
-            style={{
-              transform: `scale(${explosionScale}) rotateY(${explosionRotate}deg) translateZ(${explosionZ}px)`,
-              opacity: explosionOpacity,
-              transformStyle: 'preserve-3d',
-            }}
-          >
-            SHAS - LAB
-          </h1>
-          <div className="h-[0px] w-24 bg-accent mx-auto" />
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed tracking-wide [word-spacing:5px]">
-            Experimenting with ideas at the intersection of design and logic.
-          </p>
-        </div>
-      </section>
+  <section
+  className="min-h-screen flex flex-col md:flex-row items-center justify-center px-10 grid-background relative"
+  style={{ perspective: "0px" }}
+>
+  {/* Left: Text + Profile */}
+  <div className="flex-1 max-w-4xl w-full text-center md:text-left space-y-6 relative z-10 order-2 md:order-1 centered">
+    <div className="flex items-center justify-center md:justify-start gap-10 mb-8">
+      
+    </div>
+    
+
+    <h1
+      className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-[0.05em]"
+      style={{
+        transform: 'translateY(-170px) translateX(10px) scale(1)', 
+        opacity: explosionOpacity,
+        transformStyle: "preserve-3d",
+      }}
+    >
+      SHAS - LAB
+    </h1>
+    
+    
+    
+
+    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed tracking-wide [word-spacing:5px] mx-auto md:mx-0"
+       style={{
+        transform: 'translateY(-110px) translateX(10px) scale(1)', 
+     }} >
+      
+    </p>
+  </div>
+
+  {/* Right: Spline Scene */}
+  <div className="flex-1 flex justify-center items-center mt-12 md:mt-0 order-1 md:order-2">
+    <div
+      className="relative"
+      style={{
+        width: "1000px",
+        height: "1100px",
+        transform: 'translateY(-10px) translateX(120px) scale(1.2)',
+      }}
+    >
+      <spline-viewer url="https://prod.spline.design/63YoIKsEXJygpvju/scene.splinecode"></spline-viewer>
+    </div>
+  </div>
+</section>
+
 
       {/* Work Section */}
       <section className="min-h-screen py-32 px-6 section-divider">

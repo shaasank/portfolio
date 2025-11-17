@@ -4,7 +4,7 @@ import { useCallback, useMemo, useRef } from "react";
 
 const navigationItems = [
   { name: "HOME", path: "/" },
-  { name: "WORK", path: "/work" },
+  { name: "WORKS", path: "/work" },
   { name: "LAB", path: "/lab" },
   { name: "ABOUT", path: "/about" },
 ];
@@ -39,21 +39,32 @@ export const Navbar = () => {
   );
 
   return (
-    <nav className="fixed top-0 right-0 z-50 p-6 md:p-8" onWheel={handleWheel}>
-      <div className="page-indicator fixed top-0 left-0 right-0 pointer-events-none" />
-      <ul className="flex gap-6 md:gap-8">
-        {navigationItems.map((item) => (
-          <li key={item.path}>
-            <NavLink
-              to={item.path}
-              className="lab-link text-sm font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-fast"
-              activeClassName="text-accent"
-            >
-              {item.name}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      {/* Footer Layer Behind Navbar */}
+      
+  
+      {/* Glass Navbar */}
+      <nav
+        className="fixed top-0 left-1/2 -translate-x-1/2 z-50 px-8 py-4 backdrop-blur-md shadow-lg border border-white/20 rounded-2xl 
+                   flex justify-center items-center"
+        onWheel={handleWheel}
+      >
+        <ul className="flex gap-8">
+          {navigationItems.map((item) => (
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className="lab-link text-sm font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-200"
+                activeClassName="text-accent"
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
+  
+  
 };
